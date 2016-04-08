@@ -1,0 +1,10 @@
+{% extends "MainBundle::base.html.twig" %}
+
+{% block title %}Sube tu vídeo{% endblock %}
+
+{% block body %}
+    <legend>Sube tu vídeo</legend>
+    {{ form_start(formulari) }}
+    {{ form_widget(formulari) }}
+    {{ form_end(formulari) }}
+{% endblock %}

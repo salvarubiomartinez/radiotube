@@ -1,0 +1,34 @@
+{% extends "MainBundle::base.html.twig" %}
+
+{% block title %}Ranking{% endblock %}
+
+{% block body %}
+
+    <h1>Este es el Ranking de Vídeos</h1>
+    <br>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>Vídeo</th>
+                <th>Puntuación</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for video in videos| sortbyfield('valoracion')|reverse %}
+                <tr>
+                    <td>
+                        <a href="{{path('_details', {id:video.id})}}">                
+                            <p >{{video.nombre}} </p>
+                        </a>
+                    </td>
+                    <td>
+                        <p >{{video.valoracion}}</p>
+                    </td>
+                </tr>            
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+{% block javascripts %}
+{% endblock %}

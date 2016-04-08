@@ -1,0 +1,11 @@
+
+<h2>Seguro que deseas eliminar este video?</h2>
+<blockquote>
+    <h3>{{video.nombre}}</h3>
+    <p>{{video.descripcion}}</p>
+    <small>{{video.autor}}</small>
+</blockquote>  
+<form action="{{path('_delete', {id:video.id})}}" method="POST">
+    <input name="id" type="number" value={{video.id}} hidden/>
+    <input type="submit" value="confirmar" class="btn btn-primary"/>
+</form>           

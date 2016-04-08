@@ -1,0 +1,31 @@
+_index:
+    path:     /
+    defaults: { _controller: MainBundle:Video:Index }
+
+_create:
+    path:     /Create
+    defaults: { _controller: MainBundle:Video:Create }
+
+_details:
+    path:     /Details/{id}
+    defaults: { _controller: MainBundle:Video:Details }
+
+_delete:
+    path:     /Delete/{id}
+    defaults: { _controller: MainBundle:Video:Delete }
+
+_comentario:
+    path:   /Comentario/{videoId}
+    defaults: { _controller: MainBundle:Video:Comentario }
+    
+_valoracion:
+    path:   /Valoracion/{videoId}
+    defaults: { _controller: MainBundle:Video:Valoracion }
+    
+_ranking:
+    path:   /Ranking
+    defaults:   {_controller: MainBundle:Video:Ranking}
+    
+_search:
+    path:   /Search
+    defaults:   {_controller: MainBundle:Video:Search}

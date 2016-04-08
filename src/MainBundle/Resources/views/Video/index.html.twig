@@ -1,0 +1,24 @@
+{% extends "MainBundle::base.html.twig" %}
+
+{% block title %}Bienvenido{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>Bienvenido a RadioTube</h1>
+        <p>Comparte tus experiencias en RadioTube.</p>
+    </div>
+    {% for video in videos %}
+        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+            <a href="{{path('_details', {id:video.id})}}">
+                <video width="320" height="240">
+                    <source src="{{ asset('/bundles/main/media/'~video.url) }}" type="video/mp4">             
+                    Your browser does not support the video tag.
+                </video>
+                <p class="title">{{video.nombre}}</p>
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}

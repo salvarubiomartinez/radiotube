@@ -1,0 +1,87 @@
+{% extends "MainBundle::base.html.twig" %}
+
+{% block title %}{{video.nombre}}{% endblock %}
+
+{% block body %}
+
+    <div class="alert">
+        <h1>
+            {{video.nombre}}
+        </h1>
+    </div>
+
+    <div align="center" class="embed-responsive embed-responsive-16by9">
+        <video width="640" class="embed-responsive-item" autoplay controls>
+            <source src="{{ asset('/bundles/main/media/'~video.url) }}" type="video/mp4">             
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <br/>
+    <div class='row col-md-12 col-lg-12'>
+        <blockquote class="col-sm-10">
+            <p>{{video.descripcion}}</p>
+            <small>{{video.autor}}</small>
+        </blockquote>
+        <button type="button" id="delete" class="btn btn-primary col-md-2" data-toggle="modal" data-target="#myModal">
+            Eliminar Video
+        </button>
+    </div>
+    <div class='row col-md-12 col-lg-12'>
+        <h3 class="col-sm-10">Valoración :  {{valoracion|raw}} </h3>
+        <button type="button" id="valoracion" class="btn btn-primary col-md-2" data-toggle="modal" data-target="#myModal">
+            Valora el video
+        </button>
+    </div>
+    <div class='row col-md-12 col-lg-12'>
+        <h2>Comentarios</h2>
+        {% for coment in comentarios %}
+            <div class="well">
+                {{coment.comentario}}
+            </div>
+        {% endfor %}
+
+        <button type="button" id="comentario" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+            Añade tu comentario
+        </button>
+    </div>
+        
+    <div class="row col-lg-12">
+        <p></p>
+    </div>
+
+
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">{{video.nombre}}</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <!--div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    
+                </div-->
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('/bundles/main/js/video.js') }}"></script>
+    <script>
+        $('#comentario').click(function () {
+            $('.modal-body').load('{{path('_comentario', {videoId:video.id})}}');
+        });
+        $('#delete').click(function () {
+            $('.modal-body').load('{{path('_delete', {id:video.id})}}');
+        });
+        $('#valoracion').click(function () {
+            $('.modal-body').load('{{path('_valoracion', {videoId:video.id})}}');
+        });
+    </script>
+
+{% endblock %}
