@@ -4,19 +4,20 @@ A Symfony project created on March 16, 2016, 7:24 pm.
 
 ## Install Instructions
 
-Download the project
+Download the project.
 
 ```sh
 git clone https://github.com/salvarubiomartinez/radiotube.git
 ```
 
-Enter de foldersproject
+Enter the projects folder.
 ```sh
 cd radiotube
 ```
 
-Create a new database and run the script 'radiotube.sql'
-Install de dependencies (You may need to install composer first)
+Create a new database and run the script 'radiotube.sql'.
+
+Install de dependencies (You may need to install composer first).
 
 ```sh
 composer install
